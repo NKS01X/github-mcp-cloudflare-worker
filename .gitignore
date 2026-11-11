@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Wrangler / Cloudflare local state and build output
+.wrangler/
+dist/
+
+# Local secrets — never commit these
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+.env
+.env.*
+# Written by `npm run deploy`: your endpoint URL and MCP access key
+.mcp-connection.json
+
+# Logs and OS/editor files
+*.log
+npm-debug.log*
+.DS_Store
+.vscode/
+.idea/
+coverage/

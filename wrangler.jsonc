@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // The Worker name becomes part of your URL: https://<name>.<your-subdomain>.workers.dev
+  "name": "github-mcp-server",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  // nodejs_compat provides AsyncLocalStorage, which the Agents SDK MCP handler uses.
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "observability": { "enabled": true },
+
+  // Non-secret settings. Change them here and run `npm run deploy` again.
+  // Secrets (GITHUB_TOKEN, MCP_ACCESS_KEY) are NOT stored here; they are Worker Secrets.
+  "vars": {
+    // Which tool groups to expose: "all", or a comma-separated list of:
+    // context,repos,files,git,branches,pulls,issues,discussions,search,actions,releases,webhooks,gists,notifications,orgs
+    "GITHUB_TOOLSETS": "all",
+    // "true" hides every tool that can change anything on GitHub.
+    "GITHUB_READ_ONLY": "false",
+    // GitHub API base URL. Change only for GitHub Enterprise Server (https://HOST/api/v3).
+    "GITHUB_API_URL": "https://api.github.com",
+    // "true" disables the MCP access key. Only use this behind another auth layer (e.g. Cloudflare Access).
+    "ALLOW_UNAUTHENTICATED_MCP": "false"
+  }
+}

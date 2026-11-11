@@ -1,0 +1,5 @@
+# Copy this file to .dev.vars for local development (`npm run dev`).
+# .dev.vars is git-ignored. Never commit real tokens.
+GITHUB_TOKEN=github_pat_your_token_here
+# Any long random string. Local endpoint becomes http://localhost:8787/mcp/<this value>
+MCP_ACCESS_KEY=local-dev-key-change-me

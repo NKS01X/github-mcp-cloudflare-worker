@@ -1,0 +1,34 @@
+{
+  "name": "github-mcp-server",
+  "version": "1.0.0",
+  "description": "A GitHub MCP server for Claude custom connectors, running on Cloudflare Workers (stateless Streamable HTTP).",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "start": "wrangler dev",
+    "deploy": "node scripts/deploy.mjs",
+    "endpoint": "node scripts/deploy.mjs --show",
+    "rotate-key": "node scripts/deploy.mjs --rotate-key",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run typecheck && npm test && wrangler deploy --dry-run --outdir .wrangler/dry-run",
+    "smoke": "node scripts/smoke-test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.3.1",
+    "agents": "0.28.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261016.1",
+    "@modelcontextprotocol/client": "2.3.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5",
+    "wrangler": "^4.151.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
